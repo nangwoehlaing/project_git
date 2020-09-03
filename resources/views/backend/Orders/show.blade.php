@@ -1,0 +1,44 @@
+@extends('backendtemplate')
+@section('page')
+  <div class="container-fluid">
+  	<div class="row">
+     <div class="col-md-3"> 
+      <h1 class="h3 mb-0 text-gray-800">Voucherno:{{ $order->voucherno }}</h1>
+      <h1 class="h3 mb-0 text-gray-800">Ordrdate:{{ $order->orderdate }}</h1>
+     </div>
+  </div>
+  
+   <div class="row">
+     <div class="col-md-12"> 
+       <table class="table table-bordered">
+          <thead class="thead-dark">
+             <tr>
+                <th>No</th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+             </tr>
+         </thead>
+             <tbody>
+                      @php $i=1; $total=0; @endphp
+                      @foreach($order->items as $item)
+                      @php
+                      $subtotal=$item->price*$item->pivot->qty;
+                      $total+=$subtotal;
+                      @endphp
+                       <tr>
+                         <td>{{$i++}}</td>
+                         <td>{{$item->name}}</td>
+                         <td>{{$item->price}}MMK</td>
+                         <td>{{$item->pivot->qty}}</td>
+                         <td>
+                         	{{ $subtotal }}
+                         </td>
+                     </tr>
+                 </tbody>
+             </table>
+         </div>
+     </div>
+</div>
+@endsection
