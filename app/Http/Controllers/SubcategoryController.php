@@ -17,8 +17,7 @@ class SubcategoryController extends Controller
     {
          $subcategories=Subcategory::all();
        // dd($items);
-        return view('backend.subcategories.index',
-        compact('subcategories'));
+        return view('backend.subcategories.index',compact('subcategories'));
     }
 
     /**
@@ -29,7 +28,7 @@ class SubcategoryController extends Controller
     public function create()
     {
         
-        $categories=Category::all();
+        $categories = Category::all();
         return view('backend.subcategories.create',compact('categories'));
     }
 

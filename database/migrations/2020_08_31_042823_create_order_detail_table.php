@@ -18,7 +18,7 @@ class CreateOrderDetailTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('item_id');
             $table->integer('qty');
-            $table->timestamps();
+            
 
             $table->foreign('order_id')
                   ->references('id')
@@ -29,6 +29,7 @@ class CreateOrderDetailTable extends Migration
                   ->references('id')
                   ->on('items')
                   ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

@@ -2,7 +2,7 @@
 @section('contact')
 	<div class="jumbotron jumbotron-fluid subtitle">
   		<div class="container">
-    		<h1 class="text-center text-white"> Code Number </h1>
+    		<h1 class="text-center text-white"> Code Number :{{$itemdetail->codeno}}</h1>
   		</div>
 	</div>
 	
@@ -63,13 +63,11 @@
 
 				<p> 
 					<span class="text-uppercase "> Brand : </span>
-					<span class="ml-3"> <a href="" class="text-decoration-none text-muted"> Brand Name </a> </span>
+					<span class="ml-3"> <a href="" class="text-decoration-none text-muted"> {{ $itemdetail->brand->name }} </a> </span>
 				</p>
 
 
-				<a href="#" class="addtocartBtn text-decoration-none">
-					<i class="icofont-shopping-cart mr-2"></i> Add to Cart
-				</a>
+				<a href="{{route('shoppingcartpage')}}" class="addtocartBtn text-decoration-none " data-id='{{$itemdetail->id}}' data-name='{{$itemdetail->name}}' data-photo='{{$itemdetail->photo}}' data-price='{{$itemdetail->price}}' data-discount='{{$itemdetail->discount}}'>Add to Cart</a>
 				
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 @extends('backendtemplate')
-@section('page')
+@section('content')
 
 <!-- Begin Page Content -->
         <div class="container-fluid">

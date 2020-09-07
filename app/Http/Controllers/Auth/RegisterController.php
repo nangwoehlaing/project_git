@@ -53,6 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+             'phone' => ['required'],
+            'photo' => ['required'],
+
         ]);
     }
 
@@ -69,8 +72,26 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+         // dd($user->id);
+
+        $imageName = time().'.'.$data['photo']->extension();
+
+        $data['photo']->move(public_path('frontend/image/profile/'),$imageName);
+
+        $path = 'frontend/image/profile/'.$imageName;
+
+
+        $user_detail = new Customer;
+        $user_detail->profile = $path;
+        $user_detail->phoneno = $data['phone'];
+        $user_detail->address = $data['address'];
+        $user_detail->user_id = $user->id;
+
+        $user_detail->save();
+
+
+
         $user->assignRole('Customer');
-        
         return $user;
     }
 }

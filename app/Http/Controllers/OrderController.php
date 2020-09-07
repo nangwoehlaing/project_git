@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
 use App\Order;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+//use Auth;
 
 class OrderController extends Controller
 {
@@ -71,8 +71,9 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show( $id)
     {
+        $order=Order::find($id);
         return view('backend.orders.show',compact('order'));
     }
 
@@ -105,6 +106,28 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
+    public function order_history()
+    {
+        $user_id=Auth::id();
+        $orders=Order::where('user_id',$user_id)->orderBy('id','DESC')->get();
+        return view('frontend.order_history',compact('orders'));
+    }
+    
+     public function order_search(Request $request)
+    {
+        $order_list = Order::whereBetween('orderdate',[$request->startdate,$request->enddate])->get();
+        $order_pivot = array();
+        $user = array();
+        foreach ($order_list as $value) {
+           $order_pivot = $value->items;
+           $order_user = $value->user;
+        }
+        return $order_list;
+       
+    }
+
+
+
     public function destroy(Order $order)
     {
         //

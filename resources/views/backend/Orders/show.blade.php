@@ -1,10 +1,10 @@
 @extends('backendtemplate')
-@section('page')
+@section('content')
   <div class="container-fluid">
   	<div class="row">
-     <div class="col-md-3"> 
-      <h1 class="h3 mb-0 text-gray-800">Voucherno:{{ $order->voucherno }}</h1>
-      <h1 class="h3 mb-0 text-gray-800">Ordrdate:{{ $order->orderdate }}</h1>
+     <div class="col-md-12 mb-3"> 
+      <h1 class="h3 mb-0 text-gray-800">Voucherno:{{$order->voucherno }}</h1>
+      <h1 class="h3 mb-0 text-gray-800">Orderdate:{{$order->orderdate }}</h1>
      </div>
   </div>
   
@@ -35,6 +35,11 @@
                          <td>
                          	{{ $subtotal }}
                          </td>
+                     </tr>
+                     @endforeach
+                     <tr class="bg-dark text-white">
+                       <td colspan="4">Total:</td>
+                       <td>{{ $total }}MMK</td>
                      </tr>
                  </tbody>
              </table>

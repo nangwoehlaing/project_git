@@ -1,5 +1,5 @@
 @extends('backendtemplate')
-@section('page')
+@section('content')
   <div class="container-fluid">
   	<div class="row">
      <div class="col-md-12 mb-3"> 
@@ -24,10 +24,12 @@
                        <tr>
                          <td>{{$i++}}</td>
                          <td>{{$order->vouchrno}}</td>
-                         <td>{{$order->name}}MMK</td>
+                         <td>{{$order->user->name}}MMK</td>
                          <td>{{$order->total}}</td>
                          <td>
                          	<a href="{{ route('orders.show',$order->id) }}" class="btn btn-primary">Detail</a>
+                          <a href="#" class="btn btn-success">Confirm</a>
+                           <a href="#" class="btn btn-danger">Delete</a>
                          </td>
                      </tr>
                      @endforeach

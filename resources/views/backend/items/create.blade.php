@@ -1,5 +1,5 @@
 @extends('backendtemplate')
-@section('page')
+@section('content')
   <div class="container-fluid">
 
           <!-- Page Heading -->
@@ -13,7 +13,7 @@
                        <div class="form-group row">
                           <label for="inputcodeno " class="col-sm-2 col-form-label">Code No</label>
                               <div class="col-sm-10">
-                                <input type="codeno" class="form-control" id="inputcodeno" name="codeno">
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="inputcodeno" name="codeno">
                                 <span class="text-danger">{{$errors->first('codeno')}}</span>
                               </div>
                                </div>
@@ -102,7 +102,10 @@
                             </div>
                         </form>
               </div>
+            </div>
+            
            </div>
-  
+  </div>
+
 
 @endsection

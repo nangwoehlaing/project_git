@@ -113,6 +113,7 @@
 					@foreach($items as $item)
 		            <div class="MultiCarousel-inner">
 		                <div class="item">
+		                	<a href="{{ route('itemdetailpage',$item->id) }}">
 		                    <div class="pad15">
 		                    	<img src="{{asset($item->photo)}}" class="img-fluid">
 		                        <p class="text-truncate">{{$item->name}}</p>
@@ -134,8 +135,9 @@
 								<a href="{{route('shoppingcartpage')}}" class="addtocartBtn text-decoration-none " data-id='{{$item->id}}' data-name='{{$item->name}}' data-photo='{{$item->photo}}' data-price='{{$item->price}}' data-discount='{{$item->discount}}'>Add to Cart</a>
 
 		                </div>
+		            </a>
 		            </div>
-		                
+		              
 		            </div>
 		            @endforeach
 		            <button class="btn btnMain leftLst"><</button>
@@ -732,60 +734,14 @@
 
 	    <!-- Brand Store Item -->
 	    <section class="customer-logos slider mt-5">
+	    	@foreach($brands as $brand)
 	      	<div class="slide">
-	      		<a href="">
-		      		<img src="{{asset('front/image/brand/loacker_logo.jpg')}}">
+	      		<a href="{{ route('brandpage',$brand->id) }}">
+		      		<img src="{{asset($brand->photo)}}" class="img-fluid">
 		      	</a>
 	      	</div>
-	      	
-	      	<div class="slide">
-	      		<a href="">
-	      			<img src="{{asset('front/image/brand/lockandlock_logo.png')}}">
-	      		</a>
-	      	</div>
-	      	
-	      	<div class="slide">
-	      		<a href="">
-	      			<img src="{{asset('front/image/brand/apple_logo.png')}}">
-	      		</a>
-	      	</div>
-	      	
-	      	<div class="slide">
-	      		<a href="">
-	      			<img src="{{asset('front/image/brand/giordano_logo.png')}}">
-	      		</a>
-	      	</div>
-	      	
-	      	<div class="slide">
-	      		<a href="">
-	      			<img src="{{asset('front/image/brand/saisai_logo.png')}}">
-	      		</a>
-	      	</div>
-	      	
-	      	<div class="slide">
-	      		<a href="">
-	      			<img src="{{asset('front/image/brand/brands_logo.png')}}">
-	      		</a>	
-	      	</div>
-	      	
-	      	<div class="slide">
-	      		<a href="">
-	      			<img src="{{asset('front/image/brand/acer_logo.png')}}">
-	      		</a>
-	      	</div>
-	      	
-	      	<div class="slide">
-	      		<a href="">
-	      			<img src="{{asset('front/image/brand/bella_logo.png')}}">
-	      		</a>
-	      	</div>
-	      	
-	      	<div class="slide">
-	      		<a href="">
-	      			<img src="{{asset('front/image/brand/ariel_logo.png')}}">
-	      		</a>
-	      	</div>
-	   	</section>
+	      	@endforeach
+	      		</section>
 
 	    <div class="whitespace d-xl-block d-lg-block d-md-none d-sm-none d-none"></div>
 

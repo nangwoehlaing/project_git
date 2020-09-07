@@ -1,5 +1,5 @@
 @extends('backendtemplate')
-@section('page')
+@section('content')
   <div class="container-fluid">
 
           <!-- Page Heading -->

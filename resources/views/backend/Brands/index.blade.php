@@ -1,5 +1,5 @@
 @extends('backendtemplate')
-@section('page')
+@section('content')
   <div class="container-fluid">
 
           <!-- Page Heading -->
@@ -17,6 +17,7 @@
                        <th>Photo</th>
                         <th>Actions</th>
                      </tr>
+                   </thead>
                      <tbody>
                       @php $i=1; @endphp
                       @foreach($brands as $brand)
@@ -25,17 +26,23 @@
                          <td>{{$brand->name}}</td>
                          <td><img src='{{$brand->photo}}' width=120 height=100></td>
                          <td>
-                           <a href="#" class="btn btn-primary">Detail</a>
-                           <a href="{{route('brands.edit',$brand->id)}}" class="btn btn-warning">Edit</a>
-                           <a href="#" class="btn btn-danger">Delete</a>
-                         </td>
-                       </tr>
-                       @endforeach
+                           <a href="{{route('brands.edit',$brand->id)}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
+
+                             <form action="{{route('items.destroy',$brand->id)}}" method="POST" class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-outline-danger "><i class="fas fa-trash"></i></button>
+                            </form>
+                        </td>            
+
+                    </tr>
+                    @endforeach
                      </tbody>
-                   </thead>
+                   
                </table>
               </div>
            </div>
+</div>
 
   
 
